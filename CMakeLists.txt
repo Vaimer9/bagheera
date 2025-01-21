@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD 20)
 
 set(SOURCES
     src/main.cpp
+    src/events.cpp
+    src/utils.cpp
 )
 
 set (CMAKE_EXPORT_COMPILE_COMMANDS on)
