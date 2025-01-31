@@ -20,5 +20,11 @@ int main ()
         free(e);
     }
 
+    // Exit routine
+    for (auto&& win_ptr : ctx.global_windows)
+    {
+        delete win_ptr;
+    }
+
     return 0;
 }
