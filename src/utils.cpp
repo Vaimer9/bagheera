@@ -75,7 +75,7 @@ bgh_ctx::~bgh_ctx()
 bgh_xcb_window::bgh_xcb_window(bgh_ctx& ctx):
     ctx(ctx)
 {
-    ctx.global_windows.push_back(this); // Add self to the total window list
+    // ctx.global_windows.push_back(this); // Add self to the total window list
     this->id = xcb_generate_id(ctx.conn); // Generate an id for self
 }
 
@@ -113,10 +113,14 @@ int bgh_xcb_window::set_pixmap(bgh_ctx& ctx, int id)
 
 void bgh_xcb_window::set_geometry(xcb_get_geometry_reply_t* geometry)
 {
-    this->x = geometry->x;
-    this->y = geometry->y;
-    this->h = geometry->height;
-    this->w = geometry->width;
+    if (geometry)
+        // Sometimes CREATE_NOTIFY is triggered with no available window geometry
+    {
+        this->x = geometry->x;
+        this->y = geometry->y;
+        this->h = geometry->height;
+        this->w = geometry->width;
+    }
 }
 
 int bgh_xcb_window::set_picture(bgh_ctx& ctx, xcb_render_pictforminfo_t* render_format)

@@ -33,5 +33,6 @@ void bgh_render(bgh_ctx& ctx, xcb_generic_event_t* event);
 void bgh_ev_destroy(bgh_ctx& ctx, xcb_generic_event_t* gen_event);
 void bgh_ev_configure(bgh_ctx& ctx, xcb_generic_event_t* gen_event);
 
-void bgh_update_window(bgh_ctx& ctx, bgh_xcb_window* window);
+void bgh_update_window(bgh_ctx& ctx, xcb_window_t window);
 void bgh_draw_screen(bgh_ctx& ctx);
+// TODO: Add damage tracking for more perf

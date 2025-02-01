@@ -16,3 +16,5 @@ add_executable(main ${SOURCES})
 
 target_link_libraries(main xcb)
 target_link_libraries(main xcb-composite)
+target_link_libraries(main xcb-render)
+target_link_libraries(main xcb-damage)
